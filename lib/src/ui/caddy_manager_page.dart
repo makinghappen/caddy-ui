@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../services/caddy_api_service.dart';
 import '../models/caddy_config.dart';
@@ -16,7 +15,7 @@ class CaddyManagerPage extends StatefulWidget {
   });
 
   @override
-  _CaddyManagerPageState createState() => _CaddyManagerPageState();
+  State<CaddyManagerPage> createState() => _CaddyManagerPageState();
 }
 
 class _CaddyManagerPageState extends State<CaddyManagerPage> {
@@ -24,8 +23,6 @@ class _CaddyManagerPageState extends State<CaddyManagerPage> {
   CaddyConfig? _config;
   ServerStatus? _status;
   bool _isLoading = false;
-  String _configId = '';
-
   @override
   void initState() {
     super.initState();
