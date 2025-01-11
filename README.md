@@ -5,7 +5,7 @@ A modern, cross-platform GUI application for managing Caddy web server configura
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Flutter](https://img.shields.io/badge/flutter-%5E3.5.3-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-android%20|%20ios%20|%20linux%20|%20macos%20|%20windows-lightgrey.svg)
-![Build Status](https://github.com/yourusername/caddy-ui/actions/workflows/build.yml/badge.svg)
+![Build Status](https://github.com/makinghappen/caddy-ui/actions/workflows/build.yml/badge.svg)
 
 ## Features
 
@@ -21,13 +21,13 @@ A modern, cross-platform GUI application for managing Caddy web server configura
 
 ## Demo
 
-Try out Caddy UI directly in your browser at [https://yourusername.github.io/caddy-ui](https://yourusername.github.io/caddy-ui)
+Try out Caddy UI directly in your browser at [https://makinghappen.github.io/caddy-ui](https://makinghappen.github.io/caddy-ui)
 
 ## Installation
 
 ### Prebuilt Binaries
 
-Download the latest release for your platform from the [Releases](https://github.com/yourusername/caddy-ui/releases) page.
+Download the latest release for your platform from the [Releases](https://github.com/makinghappen/caddy-ui/releases) page.
 
 ### Prerequisites
 
@@ -39,7 +39,7 @@ Download the latest release for your platform from the [Releases](https://github
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/caddy-ui.git
+git clone https://github.com/makinghappen/caddy-ui.git
 cd caddy-ui
 ```
 
