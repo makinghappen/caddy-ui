@@ -18,6 +18,7 @@ A modern, cross-platform GUI application for managing Caddy web server configura
 - 💾 **Config Import/Export**: Easily backup and restore your Caddy configurations
 - 🌐 **Cross-Platform**: Runs on Android, iOS, Linux, macOS, and Windows
 
+![Caddy-ui](./images/caddy-ui.png "Caddy-ui")
 
 ## Demo
 
