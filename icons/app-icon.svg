@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="128" fill="#2196F3"/>
+  
+  <!-- Server stack design -->
+  <g transform="translate(128, 128)">
+    <!-- Top server -->
+    <rect x="0" y="0" width="256" height="64" rx="8" fill="white" opacity="0.9"/>
+    <rect x="16" y="16" width="32" height="32" rx="4" fill="#2196F3"/>
+    <rect x="64" y="24" width="128" height="16" rx="4" fill="#2196F3"/>
+    
+    <!-- Middle server -->
+    <rect x="0" y="96" width="256" height="64" rx="8" fill="white" opacity="0.9"/>
+    <rect x="16" y="112" width="32" height="32" rx="4" fill="#2196F3"/>
+    <rect x="64" y="120" width="128" height="16" rx="4" fill="#2196F3"/>
+    
+    <!-- Bottom server -->
+    <rect x="0" y="192" width="256" height="64" rx="8" fill="white" opacity="0.9"/>
+    <rect x="16" y="208" width="32" height="32" rx="4" fill="#2196F3"/>
+    <rect x="64" y="216" width="128" height="16" rx="4" fill="#2196F3"/>
+  </g>
+</svg>
