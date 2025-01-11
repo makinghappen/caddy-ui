@@ -204,8 +204,13 @@ class _TreeNode extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: isSelected
-                      ? theme.colorScheme.primary.withOpacity(0.2)
-                      : Colors.grey.withOpacity(0.1),
+                      ? Color.fromRGBO(
+                          theme.colorScheme.primary.red,
+                          theme.colorScheme.primary.green,
+                          theme.colorScheme.primary.blue,
+                          0.2,
+                        )
+                      : Color.fromRGBO(158, 158, 158, 0.1), // grey with opacity
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
