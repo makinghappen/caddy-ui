@@ -18,8 +18,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.5.3'
-          architecture: x64
+          channel: 'stable'
           
       - name: Install dependencies
         run: flutter pub get
@@ -61,8 +60,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.5.3'
-          architecture: x64
+          channel: 'stable'
           
       - name: Install Linux dependencies
         if: matrix.os == 'ubuntu-latest'
