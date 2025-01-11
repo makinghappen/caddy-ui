@@ -59,14 +59,7 @@
     }
   </style>
 
-  <!-- PWA support -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=1649425510');
-      });
-    }
-  </script>
+  <script src="flutter.js" defer></script>
 </head>
 <body>
   <!-- Loading indicator -->
@@ -74,6 +67,21 @@
     <div class="spinner"></div>
   </div>
 
-  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    window.addEventListener('load', function() {
+      // Hide loading indicator once app is loaded
+      window._flutter = window._flutter || {};
+      window._flutter.loader = window._flutter.loader || {};
+      window._flutter.loader.didCreateEngineInitializer = function() {
+        document.getElementById('loading').style.display = 'none';
+      };
+
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        }
+      });
+    });
+  </script>
 </body>
 </html>
