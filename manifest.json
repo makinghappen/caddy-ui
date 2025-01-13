@@ -8,6 +8,20 @@
     "description": "A modern web UI for managing Caddy server configurations",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "categories": ["utilities", "developer tools"],
+    "shortcuts": [
+        {
+            "name": "Open Config Editor",
+            "url": "/config",
+            "icons": [
+                {
+                    "src": "icons/Icon-192.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ],
     "icons": [
         {
             "src": "icons/Icon-192.png",
