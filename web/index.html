@@ -90,9 +90,6 @@
   </div>
 
   <script>
-    // Inject service worker version for PWA support
-    var serviceWorkerVersion = null;
-
     window.addEventListener('load', function(ev) {
       var loading = document.querySelector('#loading');
       
@@ -108,11 +105,6 @@
       
       // Initialize service worker
       if ('serviceWorker' in navigator) {
-        // Wait for any existing service worker to activate
-        navigator.serviceWorker.ready.then(function(registration) {
-          console.log('Existing service worker is active');
-        });
-
         // Register service worker in the same scope as base href
         navigator.serviceWorker.register(
           'flutter_service_worker.js', 
@@ -123,7 +115,17 @@
         ).then(
           function(reg) {
             console.log('Service worker registered with scope:', reg.scope);
-            serviceWorkerVersion = reg.active?.version;
+            
+            // Handle service worker updates
+            reg.addEventListener('updatefound', function() {
+              var newWorker = reg.installing;
+              newWorker.addEventListener('statechange', function() {
+                if (newWorker.state === 'activated') {
+                  console.log('New service worker activated');
+                }
+              });
+            });
+
             initFlutter();
           },
           function(err) {
