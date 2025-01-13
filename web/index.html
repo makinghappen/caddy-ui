@@ -20,6 +20,14 @@
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A modern web UI for managing Caddy server configurations">
   <meta name="theme-color" content="#2196F3">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2196F3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1565C0" media="(prefers-color-scheme: dark)">
+  <!-- PWA meta tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Caddy Manager">
+  <meta name="msapplication-TileColor" content="#2196F3">
+  <meta name="msapplication-navbutton-color" content="#2196F3">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,9 +43,17 @@
 
   <!-- Loading indicator styles -->
   <style>
+    :root {
+      color-scheme: light dark;
+    }
     body {
       background-color: #FFFFFF;
       margin: 0;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #303030;
+      }
     }
     #loading {
       display: flex;
@@ -52,6 +68,12 @@
       border-top: 4px solid #2196F3;
       border-radius: 50%;
       animation: spin 1s linear infinite;
+    }
+    @media (prefers-color-scheme: dark) {
+      .spinner {
+        border-color: #424242;
+        border-top-color: #2196F3;
+      }
     }
     @keyframes spin {
       0% { transform: rotate(0deg); }
@@ -68,7 +90,15 @@
   </div>
 
   <script>
-    window.addEventListener('load', function() {
+    // Inject service worker version for PWA support
+    var serviceWorkerVersion = null;
+    var scriptLoaded = false;
+    function loadMainDartJs() {
+      if (scriptLoaded) {
+        return;
+      }
+      scriptLoaded = true;
+      
       // Hide loading indicator once app is loaded
       window._flutter = window._flutter || {};
       window._flutter.loader = window._flutter.loader || {};
@@ -76,11 +106,16 @@
         document.getElementById('loading').style.display = 'none';
       };
 
+      // Load app
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         }
       });
+    }
+
+    window.addEventListener('load', function() {
+      loadMainDartJs();
     });
   </script>
 </body>
