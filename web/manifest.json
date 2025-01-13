@@ -1,7 +1,8 @@
 {
     "name": "Caddy Manager",
     "short_name": "Caddy UI",
-    "start_url": ".",
+    "start_url": "./",
+    "scope": "./",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#2196F3",
@@ -12,7 +13,7 @@
     "shortcuts": [
         {
             "name": "Open Config Editor",
-            "url": "/config",
+            "url": "./config",
             "icons": [
                 {
                     "src": "icons/Icon-192.png",

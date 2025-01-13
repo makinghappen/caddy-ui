@@ -92,30 +92,69 @@
   <script>
     // Inject service worker version for PWA support
     var serviceWorkerVersion = null;
-    var scriptLoaded = false;
-    function loadMainDartJs() {
-      if (scriptLoaded) {
+
+    window.addEventListener('load', function(ev) {
+      var loading = document.querySelector('#loading');
+      
+      // Download main.dart.js
+      if (!_flutter) {
+        loading.textContent = 'Flutter initialization failed';
         return;
       }
-      scriptLoaded = true;
       
-      // Hide loading indicator once app is loaded
-      window._flutter = window._flutter || {};
-      window._flutter.loader = window._flutter.loader || {};
-      window._flutter.loader.didCreateEngineInitializer = function() {
-        document.getElementById('loading').style.display = 'none';
-      };
+      // Get base path from base href
+      var base = document.querySelector('base');
+      var baseHref = (base && base.getAttribute('href')) || './';
+      
+      // Initialize service worker
+      if ('serviceWorker' in navigator) {
+        // Wait for any existing service worker to activate
+        navigator.serviceWorker.ready.then(function(registration) {
+          console.log('Existing service worker is active');
+        });
 
-      // Load app
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      });
-    }
+        // Register service worker in the same scope as base href
+        navigator.serviceWorker.register(
+          'flutter_service_worker.js', 
+          {
+            scope: baseHref,
+            updateViaCache: 'none'
+          }
+        ).then(
+          function(reg) {
+            console.log('Service worker registered with scope:', reg.scope);
+            serviceWorkerVersion = reg.active?.version;
+            initFlutter();
+          },
+          function(err) {
+            console.error('Service worker registration failed:', err);
+            initFlutter();
+          }
+        );
+      } else {
+        initFlutter();
+      }
 
-    window.addEventListener('load', function() {
-      loadMainDartJs();
+      function initFlutter() {
+        _flutter.loader.loadEntrypoint({
+          onEntrypointLoaded: function(engineInitializer) {
+            engineInitializer.initializeEngine({
+              useColorEmoji: true,
+              onError: function(error) {
+                console.error('Flutter initialization error:', error);
+                loading.textContent = 'Error loading application';
+              }
+            }, function(engine) {
+              loading.remove();
+              engine.runApp();
+            });
+          },
+          onError: function(error) {
+            console.error('Entrypoint load error:', error);
+            loading.textContent = 'Error loading application';
+          }
+        });
+      }
     });
   </script>
 </body>
